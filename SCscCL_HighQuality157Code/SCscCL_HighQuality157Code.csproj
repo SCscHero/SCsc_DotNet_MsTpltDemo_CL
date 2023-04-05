@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="coverlet.collector" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_12_规范开发行为\" />
+    <Folder Include="_11_代码整洁\" />
+    <Folder Include="_10_命名规范\" />
+    <Folder Include="_09_安全性设计\" />
+    <Folder Include="_08_类型设计\" />
+    <Folder Include="_07_成员设计\" />
+    <Folder Include="_06_异步、多线程、任务和并行\" />
+    <Folder Include="_05_异常和自定义异常\" />
+    <Folder Include="_04_资源管理和序列化\" />
+    <Folder Include="_03_泛型、委托和事件\" />
+  </ItemGroup>
+
+</Project>
