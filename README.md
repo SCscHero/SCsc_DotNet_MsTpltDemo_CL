@@ -47,7 +47,7 @@ Full Name=SCscHero's DotNet Microsoft Template Demo
 ## CommonCL：通用Lib
 SCscCL_Model：Sample_Model层
 
-##Algorithm
+## Algorithm
 SCscCL_AlgorithmNUnitTest：关于使用C#算法单元测试层
 SCscCL_HighQuality157Code：关于.Net的157个建议的学习笔记
 
@@ -76,7 +76,7 @@ SCsc_DesignPattern.Singleton
 
 ## Mobile(Android/IOS Client/MiniApplet)
 【TODO】MAUI
-
+【TODO】Other Repo，包含Uniapp相关技术栈，目前未整理好。
 
 ## Job
 【TODO】
