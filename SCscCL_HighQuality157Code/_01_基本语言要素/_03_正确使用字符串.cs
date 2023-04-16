@@ -3,7 +3,7 @@ using System.Text;
 namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
     [TestClass]
-    public class _3_正确使用字符串
+    public class _03_正确使用字符串
 	{
         [TestMethod]
         public void 正确操作字符串()

@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _4_TryParse比Parse好
+	public class _04_TryParse比Parse好
 	{
 		/// <summary>
 		/// 

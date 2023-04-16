@@ -1,7 +1,7 @@
 ﻿namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _9_习惯重载运算符
+	public class _09_习惯重载运算符
 	{
 		#region Test_Eq1
 		private class Eq1Salary

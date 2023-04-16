@@ -1,7 +1,7 @@
 ﻿namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _6_区别readonly和const
+	public class _06_区别readonly和const
 	{
 		#region TestModel_Eq1
 		//readonly int eq1Crvar1;//Error CS0106 The modifier 'readonly' is not valid for this item

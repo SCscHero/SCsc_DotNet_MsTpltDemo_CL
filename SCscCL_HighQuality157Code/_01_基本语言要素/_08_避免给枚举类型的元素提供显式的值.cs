@@ -1,7 +1,7 @@
 ﻿namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _8_避免给枚举类型的元素提供显式的值
+	public class _08_避免给枚举类型的元素提供显式的值
 	{
 		#region TestModel_Eq1
 		private enum Eq1Race

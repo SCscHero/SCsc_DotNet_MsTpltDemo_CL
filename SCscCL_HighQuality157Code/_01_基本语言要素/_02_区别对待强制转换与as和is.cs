@@ -1,7 +1,7 @@
 ﻿namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _2_区别对待强制转换与as和is
+	public class _02_区别对待强制转换与as和is
 	{
 		#region TestModel_Eq1
 		private class Eq1_Animal { }

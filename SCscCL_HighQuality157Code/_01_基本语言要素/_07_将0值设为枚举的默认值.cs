@@ -5,7 +5,7 @@ using System;
 namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _7_将0值设为枚举的默认值
+	public class _07_将0值设为枚举的默认值
 	{
 		#region TestModel_Eq1
 		private enum Eq1Race

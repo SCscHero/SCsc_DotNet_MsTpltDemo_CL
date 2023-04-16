@@ -1,7 +1,7 @@
 ﻿namespace SCscCL_HighQuality157Code._01_基本语言要素
 {
 	[TestClass]
-	public class _1_使用默认转型方法
+	public class _01_使用默认转型方法
 	{
 		/// <summary>
 		/// 隐式转换和显式转换
