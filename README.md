@@ -47,7 +47,7 @@ Full Name=SCscHero's DotNet Microsoft Template Demo
 ## CommonCL：通用Lib
 SCscCL_Model：Sample_Model层
 
-##Algorithm
+## Algorithm
 SCscCL_AlgorithmNUnitTest：关于使用C#算法单元测试层
 SCscCL_HighQuality157Code：关于.Net的157个建议的学习笔记
 
@@ -72,43 +72,42 @@ SCsc_DesignPattern.SimpleFactory
 SCsc_DesignPattern.Singleton
 
 ## Desktop
-【TODO】WPF
+- 【TODO】WPF
 
 ## Mobile(Android/IOS Client/MiniApplet)
-【TODO】MAUI
-
+- 【TODO】MAUI
+- 【TODO】Other Repo，包含Uniapp相关技术栈，目前未整理好。
 
 ## Job
-【TODO】
+- 【TODO】
 
 
 ## RPCAndGrpc
-SCscCL_GrpcClient
-SCscCL_GrpcService
+- SCscCL_GrpcClient
+- SCscCL_GrpcService
 
 ## UnitTest
-SCscCL_MSUnitTest
-SCscCL_NUnitTest
-SCscCL_XNuitTest
+- SCscCL_MSUnitTest
+- SCscCL_NUnitTest
+- SCscCL_XNuitTest
 
 
 ### WebAPI
-SCscCL_MiniAPI：精简化语法糖WebAPI格式。
-SCscCL_WebAPI：标准WebAPI模板。
+- SCscCL_MiniAPI：精简化语法糖WebAPI格式。
+- SCscCL_WebAPI：标准WebAPI模板。
 
 ### WebApp&UI
-SCscCL_Blazor：暂时建立的Blazor&Razor可复用组件库。
-SCscCL_BlazorServer：
-SCscCL_BlazorWebAssembly：
-SCscCL_MVC：
+- SCscCL_Blazor：暂时建立的Blazor&Razor可复用组件库。
+- SCscCL_BlazorServer：
+- SCscCL_BlazorWebAssembly：
+- SCscCL_MVC：
 
 # Related Repo
-【TODO】关于基于.Net7开箱即用的个人的微服务框架/中间件/组件的Sample，目前是私有的，未来可能基于个人代表作做技术分享。
-关于Powershell&Shell的学习记录Repo。
-关于Python、Java、Scala等语言的学习记录Repo。
-关于VBA、Vue、Gulp/WebPack等前端学习记录的Repo。
+- 【TODO】关于基于.Net7开箱即用的个人的微服务框架/中间件/组件的Sample，目前是私有的，未来可能基于个人代表作做技术分享。
+- 关于Powershell&Shell的学习记录Repo。
+- 关于Python、Java、Scala等语言的学习记录Repo。
+- 关于VBA、Vue、Gulp/WebPack等前端学习记录的Repo。
 
 # Copyright Statement
-该Repo不含任何商业元素，仅供学习使用。
-
-The Repo does not contain any commercial elements and is for learning purposes only.
+- 该Repo不含任何商业元素，仅供学习使用。
+- The Repo does not contain any commercial elements and is for learning purposes only.
