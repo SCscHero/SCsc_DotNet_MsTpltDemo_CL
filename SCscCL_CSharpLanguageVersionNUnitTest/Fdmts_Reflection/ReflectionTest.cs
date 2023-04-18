@@ -20,7 +20,7 @@ namespace CsLangVersion.Fdmts_Reflection
 			public int Name { get; set; }
 		}
 		[Test]
-		public void 反射_确定类型是否为泛型_Eq1()
+		public void 反射_确定类型是否为泛型_Eq01()
 		{
 			Type t1 = typeof(Dictionary<string, Student>);
 			Console.WriteLine("Namespace>>>" + t1.Namespace);
@@ -30,7 +30,7 @@ namespace CsLangVersion.Fdmts_Reflection
 		}
 
 		[Test]
-		public void 反射_获取泛型类型参数_Eq2()
+		public void 反射_获取泛型类型参数_Eq02()
 		{
 			Type t1 = typeof(Dictionary<string, Student>);
 			Type[] typeParams = t1.GetGenericArguments();
@@ -39,7 +39,7 @@ namespace CsLangVersion.Fdmts_Reflection
 			{
 				if (item.IsGenericParameter)
 				{
-					DisplayGenericParameter_Eq2(item);
+					DisplayGenericParameter_Eq02(item);
 				}
 				else
 				{
@@ -47,7 +47,7 @@ namespace CsLangVersion.Fdmts_Reflection
 				}
 			}
 		}
-		private static void DisplayGenericParameter_Eq2(Type tp)
+		private static void DisplayGenericParameter_Eq02(Type tp)
 		{
 			Console.WriteLine("      Type parameter: {0} position {1}", tp.Name, tp.GenericParameterPosition);
 		}
@@ -56,12 +56,12 @@ namespace CsLangVersion.Fdmts_Reflection
 		/// Ref:https://learn.microsoft.com/zh-cn/dotnet/framework/reflection-and-codedom/how-to-examine-and-instantiate-generic-types-with-reflection
 		/// </summary>
 		[Test]
-		public void 反射_获取父类类型_Eq3()
+		public void 反射_获取父类类型_Eq03()
 		{
 			//1.获取其基类的类型
 			var rflRes = Assembly.GetExecutingAssembly().GetTypes().Where(type =>
 				(type.BaseType?.IsGenericType ?? false)
-					&& (type.BaseType.GetGenericTypeDefinition() == typeof(EfTypeMap_Eq3<>)));
+					&& (type.BaseType.GetGenericTypeDefinition() == typeof(EfTypeMap_Eq03<>)));
 			foreach (var item in rflRes)
 			{
 				Console.WriteLine("Assembly：" + item.Assembly);
@@ -79,40 +79,40 @@ namespace CsLangVersion.Fdmts_Reflection
 			}
 
 		}
-		private class BaseEntity_Eq3 { }
-		private interface IEfTypeMap_Eq3<T> where T : BaseEntity_Eq3
+		private class BaseEntity_Eq03 { }
+		private interface IEfTypeMap_Eq03<T> where T : BaseEntity_Eq03
 		{
 			void Configure();
 		}
-		private class EfTypeMap_Eq3<T> : IEfTypeMap_Eq3<T> where T : BaseEntity_Eq3
+		private class EfTypeMap_Eq03<T> : IEfTypeMap_Eq03<T> where T : BaseEntity_Eq03
 		{
 			public void Configure()
 			{
 
 			}
 		}
-		private class Bas_Menu : BaseEntity_Eq3 { public string MenuName { get; set; } }
-		private class Bas_MenuFl : EfTypeMap_Eq3<Bas_Menu> { }
+		private class Bas_Menu : BaseEntity_Eq03 { public string MenuName { get; set; } }
+		private class Bas_MenuFl : EfTypeMap_Eq03<Bas_Menu> { }
 
 
-		private class Room_Eq4 { }
-		private class Kitchen_Eq4 : Room_Eq4 { }
-		private class Bedroom_Eq4 : Room_Eq4 { }
-		private class Guestroom_Eq4 : Bedroom_Eq4 { }
-		private class MasterBedroom_Eq4 : Bedroom_Eq4 { }
+		private class Room_Eq04 { }
+		private class Kitchen_Eq04 : Room_Eq04 { }
+		private class Bedroom_Eq04 : Room_Eq04 { }
+		private class Guestroom_Eq04 : Bedroom_Eq04 { }
+		private class MasterBedroom_Eq04 : Bedroom_Eq04 { }
 		/// <summary>
 		/// https://learn.microsoft.com/en-us/dotnet/api/system.type.isassignablefrom?view=net-8.0
 		/// </summary>
 		[Test]
-		public void 反射_IsAssignableFrom函数根据基类Type获取遍历_Eq4()
+		public void 反射_IsAssignableFrom函数根据基类Type获取遍历_Eq04()
 		{
 			// Demonstrate classes:
 			Console.WriteLine("Defined Classes:");
-			Room_Eq4 room1 = new Room_Eq4();
-			Kitchen_Eq4 kitchen1 = new Kitchen_Eq4();
-			Bedroom_Eq4 bedroom1 = new Bedroom_Eq4();
-			Guestroom_Eq4 guestroom1 = new Guestroom_Eq4();
-			MasterBedroom_Eq4 masterbedroom1 = new MasterBedroom_Eq4();
+			Room_Eq04 room1 = new Room_Eq04();
+			Kitchen_Eq04 kitchen1 = new Kitchen_Eq04();
+			Bedroom_Eq04 bedroom1 = new Bedroom_Eq04();
+			Guestroom_Eq04 guestroom1 = new Guestroom_Eq04();
+			MasterBedroom_Eq04 masterbedroom1 = new MasterBedroom_Eq04();
 
 			Type room1Type = room1.GetType();
 			Type kitchen1Type = kitchen1.GetType();
@@ -161,6 +161,37 @@ namespace CsLangVersion.Fdmts_Reflection
 
 			Console.ReadLine();
 		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[Test]
+		public void 反射_使用Is关键字判断类型的误区_Eq05()
+		{
+
+			Console.WriteLine(@"typeof(Apple_Eq05).GetInterfaces().FirstOrDefault()>>>" + typeof(Apple_Eq05).GetInterfaces()?.Where(r => r.Name == nameof(IPhotosynthesis_Eq05))?.FirstOrDefault()?.Name ?? "Empty");
+			Console.WriteLine(@"使用Type is Type做判断>>>>>>>>>>>");
+			Console.WriteLine(@"typeof(Apple_Eq05).GetInterfaces()?.Where(r => r.Name == nameof(IPhotosynthesis_Eq05))?.FirstOrDefault()>>>" + (typeof(Apple_Eq05).GetInterfaces()?.Where(r => r.Name == nameof(IPhotosynthesis_Eq05))?.FirstOrDefault() is IPhotosynthesis_Eq05));
+
+
+			Console.WriteLine(@"使用instance is Type做判断>>>>>>>>>>>");
+			Console.WriteLine(Activator.CreateInstance(typeof(Apple_Eq05)) is IPhotosynthesis_Eq05);
+
+            Console.WriteLine(@"或者使用IsAssignableFrom>>>>Ref：https://www.cnblogs.com/radray/p/4529482.html");
+            Console.WriteLine("使用IsAssignableFrom判断Apple是不是继承与IsAssignableFrom：" + typeof(Apple_Eq05).IsAssignableFrom(typeof(IPhotosynthesis_Eq05)));
+        }
+		private interface IPhotosynthesis_Eq05
+		{
+			void AbsorbingEnergy();
+		}
+		private class Botany_Eq05 : IPhotosynthesis_Eq05
+		{
+			public virtual void AbsorbingEnergy()
+			{
+				Console.WriteLine("光合作用");
+			}
+		}
+		private class Apple_Eq05 : Botany_Eq05 { }
 
 
 	}
