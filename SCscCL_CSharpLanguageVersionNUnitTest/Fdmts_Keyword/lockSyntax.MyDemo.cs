@@ -50,12 +50,12 @@ namespace CsLangVersion.Fdmts_Keyword
 		{
 			lock (lockMyDemo)
 			{
-				Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
 				foreach (var amount in amounts)
 				{
+					Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
 					act.balance += amount;
 				}
-				Console.WriteLine(System.Threading.Thread.CurrentThread.ManagedThreadId);
+				
 			}
 		}
 		[Test]
