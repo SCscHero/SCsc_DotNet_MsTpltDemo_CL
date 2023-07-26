@@ -2,12 +2,19 @@
 
 namespace CsLangVersion.Fdmts_PrimitiveType
 {
-    /// <summary>
-    /// https://www.cnblogs.com/net-sky/p/12706916.html
-    /// </summary>
+    
     public class DateTimeTest
     {
         [Test]
+        public void DateTimeConstructor()
+        {
+            var date = new DateTime(2023,5,1);
+            Console.WriteLine(date);
+        }
+		/// <summary>
+		/// https://www.cnblogs.com/net-sky/p/12706916.html
+		/// </summary>
+		[Test]
         public void DateTimeTransfer()
         {
             // C 货币
