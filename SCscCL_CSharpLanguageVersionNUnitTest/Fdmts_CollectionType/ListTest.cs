@@ -169,6 +169,24 @@ namespace CsLangVersion.Fdmts_CollectionType
 			 */
 		}
 
+		[Test]
+		public void Eq007_ListPTType_Distinct()
+		{
+			List<int> ilist = new List<int>() { 1, 2, 3, 4, 2, 3 };
+			ilist = ilist.Distinct().ToList();
+			foreach (var item in ilist)
+			{
+				Console.WriteLine(item);
+			}
+
+			List<string> strList = new List<string>() { "4", "4", "5", "6", "6","22","11","22" };
+			strList = strList.Distinct().ToList();
+			foreach (var item in strList)
+			{
+				Console.WriteLine(item);
+			}
+		}
+
 
 
 	}

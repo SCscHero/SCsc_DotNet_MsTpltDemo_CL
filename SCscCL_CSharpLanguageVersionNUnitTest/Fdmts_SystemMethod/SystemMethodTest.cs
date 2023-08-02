@@ -2,7 +2,7 @@
 
 namespace CsLangVersion.Fdmts_SystemMethod
 {
-    public class SystemMethodTest
+	internal partial class SystemMethodTest
     {
         [SetUp]
         public void Setup()
