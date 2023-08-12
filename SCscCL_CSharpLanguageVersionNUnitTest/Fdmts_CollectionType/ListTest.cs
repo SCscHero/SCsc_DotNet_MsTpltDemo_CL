@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -179,7 +180,7 @@ namespace CsLangVersion.Fdmts_CollectionType
 				Console.WriteLine(item);
 			}
 
-			List<string> strList = new List<string>() { "4", "4", "5", "6", "6","22","11","22" };
+			List<string> strList = new List<string>() { "4", "4", "5", "6", "6", "22", "11", "22" };
 			strList = strList.Distinct().ToList();
 			foreach (var item in strList)
 			{
@@ -187,6 +188,114 @@ namespace CsLangVersion.Fdmts_CollectionType
 			}
 		}
 
+		private class Eq008_User
+		{
+			public int Id { get; set; }
+			public string Name { get; set; }
+			public int Age { get; set; }
+		}
+		List<Eq008_User> Eq8list = new List<Eq008_User>()
+ {
+	new Eq008_User() { Id = 1, Name = "张三", Age = 11 } ,
+	new Eq008_User() { Id = 1, Name = "张三", Age = 11} ,
+	new Eq008_User() { Id = 3, Name = "李四", Age = 13 } ,
+	new Eq008_User() { Id = 7, Name = "王五", Age = 15 } ,
+	new Eq008_User() { Id = 8, Name = "王五", Age = 16 } ,
+	new Eq008_User() { Id = 8, Name = "王五", Age = 17 } ,
+	new Eq008_User() { Id = 10, Name = "陈六", Age = 17 } ,
+	new Eq008_User() { Id = 11, Name = "马户", Age = 25 } ,
+	new Eq008_User() { Id = 11, Name = "马户", Age = 25 } ,
+	new Eq008_User() { Id = 11, Name = "马户", Age = 25 } ,
+	new Eq008_User() { Id = 11, Name = "又鸟", Age = 25 } ,
+	new Eq008_User() { Id = 11, Name = "又鸟", Age = 26 } ,
+	new Eq008_User() { Id = 11, Name = "又鸟", Age = 26 } ,
+ };
+		[Test]
+		public void Eq008_ListEntityType_Distinct_使用GroupBy的错误示例()
+		{
+
+			//【缺陷方案】使用List对象GroupBy方法一条一条去实现。
+			Eq8list = Eq8list.GroupBy(p => p.Name).Select(q => q.First()).ToList();
+			Eq8list = Eq8list.GroupBy(p => p.Id).Select(q => q.First()).ToList();
+			Eq8list = Eq8list.GroupBy(p => p.Age).Select(q => q.First()).ToList();
+			foreach (var item in Eq8list)
+			{
+				Console.WriteLine("Id:" + item.Id + ", Name:" + item.Name + ", Age:" + item.Age);
+			}
+		}
+
+		private class Eq008_Product
+		{
+			public string Name { get; set; }
+			public int Code { get; set; }
+		}
+		// Custom comparer for the Product class
+		private class Eq008_ProductComparer : IEqualityComparer<Eq008_Product>
+		{
+			// Products are equal if their names and product numbers are equal.
+			public bool Equals(Eq008_Product x, Eq008_Product y)
+			{
+				//Check whether the compared objects reference the same data.
+				if (Object.ReferenceEquals(x, y)) return true;
+				//Check whether any of the compared objects is null.
+				if (Object.ReferenceEquals(x, null) || Object.ReferenceEquals(y, null))
+					return false;
+				//Check whether the products' properties are equal.
+				return x.Code == y.Code && x.Name == y.Name;
+			}
+			// If Equals() returns true for a pair of objects
+			// then GetHashCode() must return the same value for these objects.
+			public int GetHashCode(Eq008_Product product)
+			{
+				//Check whether the object is null
+				if (Object.ReferenceEquals(product, null)) return 0;
+				//Get hash code for the Name field if it is not null.
+				int hashProductName = product.Name == null ? 0 : product.Name.GetHashCode();
+				//Get hash code for the Code field.
+				int hashProductCode = product.Code.GetHashCode();
+				//Calculate the hash code for the product.
+				return hashProductName ^ hashProductCode;
+			}
+		}
+
+		/// <summary>
+		/// https://learn.microsoft.com/zh-cn/dotnet/api/system.linq.enumerable.distinct?view=net-7.0
+		/// </summary>
+		[Test]
+		public void Eq008_ListEntityType_Distinct_Entity实现比较器后去重()
+		{
+			Eq008_Product[] products = { new Eq008_Product { Name = "apple", Code = 9 },
+					   new Eq008_Product { Name = "orange", Code = 4 },
+					   new Eq008_Product { Name = "apple", Code = 9 },
+					   new Eq008_Product { Name = "orange", Code = 4 },
+					   new Eq008_Product { Name = "orange", Code = 4 },
+					   new Eq008_Product { Name = "apple", Code = 25 },
+					   new Eq008_Product { Name = "orange", Code = 4 },
+					   new Eq008_Product { Name = "apple11", Code = 25 },
+					   new Eq008_Product { Name = "orange", Code = 4 },
+					   new Eq008_Product { Name = "lemon", Code = 12 } };
+			// Exclude duplicates.
+			IEnumerable<Eq008_Product> noduplicates =
+				products.Distinct(new Eq008_ProductComparer());
+
+			foreach (var product in noduplicates)
+				Console.WriteLine(product.Name + " " + product.Code);
+		}
+
+		/// <summary>
+		/// 【稳定方案1】使用Linq实现。
+		/// </summary>
+		[Test]
+		public void Eq008_ListEntityType_Distinct_使用Linq去重()
+		{
+			var list1 = (from p in Eq8list
+						 group p by new { p.Id, p.Name, p.Age } into g
+						 select g).ToList();
+			foreach (var item in list1)
+			{
+				Console.WriteLine("Id:" + item.Key.Id + ", Name:" + item.Key.Name + ", Age:" + item.Key.Age);
+			}
+		}
 
 
 	}
