@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CsLangVersion.Fdmts_CollectionType
 {
-	public class DataSetTest
+	internal class DataSetTest
 	{
 		/// <summary>
 		/// 
