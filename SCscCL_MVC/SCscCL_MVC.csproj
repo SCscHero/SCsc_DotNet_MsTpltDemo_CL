@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="WebInfra\HandlerAuthorizeAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="WebInfra\Filter\Handler.cs" />
+  </ItemGroup>
+
 </Project>
