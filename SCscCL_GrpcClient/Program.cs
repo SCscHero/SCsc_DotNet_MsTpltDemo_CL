@@ -1,8 +1,5 @@
-﻿using Grpc.Core;
-using Grpc.Net.Client;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Grpc.Net.Client;
+using SCscCL_GrpcService;
 
 namespace SCscCL_GrpcClient
 {

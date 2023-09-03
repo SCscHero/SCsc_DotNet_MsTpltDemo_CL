@@ -19,8 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
-    <Protobuf Include="Protos\CustomMath.proto" GrpcServices="Clinet" />
+    <Protobuf Include="..\SCscCL_GrpcService\Protos\greet.proto" GrpcServices="Client">
+      <Link>Protos\greet.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\SCscCL_GrpcService\Protos\CustomMath.proto" GrpcServices="Clinet">
+      <Link>Protos\CustomMath.proto</Link>
+    </Protobuf>
   </ItemGroup>
 
 </Project>
