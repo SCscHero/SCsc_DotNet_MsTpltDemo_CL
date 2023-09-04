@@ -7,11 +7,8 @@ namespace SCscCL_GrpcClient
     {
         static void Main(string[] args)
         {
-            //测试Client和Server通信
-            {
-                //Console.WriteLine("***************");
-                //TestHello().Wait();
-            }
+            //【示例1/.】测试Client和Server通信
+            TestHello().Wait();
             //测试Protobuf与Json长度和序列化速度
             {
                 //UnitTest.Show();
@@ -24,13 +21,11 @@ namespace SCscCL_GrpcClient
 
         private static async Task TestHello()
         {
-            Console.WriteLine("************简单调用************");
-            using (var channel = GrpcChannel.ForAddress("https://localhost:5001"))
+            using (var channel = GrpcChannel.ForAddress("https://localhost:7138"))
             {
                 var client = new Greeter.GreeterClient(channel);
                 var reply = await client.SayHelloAsync(new HelloRequest { Name = "SCscHero" });
                 Console.WriteLine("服务端说：" + reply.Message);
-
             }
         }
 
@@ -38,7 +33,7 @@ namespace SCscCL_GrpcClient
         {
             Console.WriteLine("************客户端流************");
 
-            using (var channel = GrpcChannel.ForAddress("https://localhost:5001"))
+            using (var channel = GrpcChannel.ForAddress("https://localhost:7138"))
             {
                 var client = new CustomMath.CustomMathClient(channel);
                 //客户端调用的方法。在CustomMathService里面找

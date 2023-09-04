@@ -1,20 +1,15 @@
-syntax = "proto3";
-
-option csharp_namespace = "SCscCL_GrpcService";
-
+syntax = "proto3";//标志当前proto的版本
+option csharp_namespace = "SCscCL_GrpcService";//定义C#当中的命名空间
 package greet;
-
-// The greeting service definition.
+// The greeting service definition.//定义接口
 service Greeter {
-  // Sends a greeting
+  // Sends a greeting//定义接收值//返回值
   rpc SayHello (HelloRequest) returns (HelloReply);
 }
-
-// The request message containing the user's name.
+// The request message containing the user's name.//定义DTO
 message HelloRequest {
-  string name = 1;
+  string name = 1;//定义代号，同一个类型中不同属性代号唯一。
 }
-
 // The response message containing the greetings.
 message HelloReply {
   string message = 1;
