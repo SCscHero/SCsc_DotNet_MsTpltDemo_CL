@@ -13,6 +13,39 @@ builder.Services.AddSingleton<Service>();
 
 var app = builder.Build();
 
+#region 
+//CS8803:Top-level statements must precede namespace and type declarations.
+app.MapMethods("/options-or-head", new[] { "OPTIONS", "HEAD" }, () => "这是一个选项或头请求");
+app.MapMethods("/get-or-post-or-put-delete-options-or-head", new[] { "GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD" }, () => "这是一个选项或头请求");
+app.MapGet("/lambda", () => "这是一个内联 lambda");
+Func<string> handler = () => "这是一个 lambda 变量";
+app.MapGet("/func", handler);
+//HelloHandler helloHandler = new HelloHandler();
+//app.MapGet("/hello", helloHandler.Hello);
+//app.MapGet("/staticHello", HelloHandler.StaticHello);
+
+var summaries = new[]
+{
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+};
+app.MapGet("/weatherforecast", () =>
+{
+    var forecast = Enumerable.Range(1, 5).Select(index =>
+        new WeatherForecast
+        (
+            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            Random.Shared.Next(-20, 55),
+            summaries[Random.Shared.Next(summaries.Length)]
+        ))
+        .ToArray();
+    return forecast;
+})
+.WithName("GetWeatherForecast")
+.WithOpenApi();
+
+#endregion
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -20,10 +53,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+
+app.Run();
+
 
 #region 4种请求方法基本结构
 
@@ -43,35 +75,6 @@ record Person(string Name, int Age);
 //                     [FromHeader(Name = "Content-Type")] string contentType)
 //                     => { });
 
-
-
-#region 
-app.MapMethods("/options-or-head", new[] { "OPTIONS", "HEAD" }, () => "这是一个选项或头请求");
-app.MapMethods("/get-or-post-or-put-delete-options-or-head", new[] { "GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD" }, () => "这是一个选项或头请求");
-app.MapGet("/lambda", () => "这是一个内联 lambda");
-Func<string> handler = () => "这是一个 lambda 变量";
-app.MapGet("/func", handler);
-HelloHandler helloHandler = new HelloHandler();
-app.MapGet("/hello", helloHandler.Hello);
-app.MapGet("/staticHello", HelloHandler.StaticHello);
-#endregion
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
-app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {

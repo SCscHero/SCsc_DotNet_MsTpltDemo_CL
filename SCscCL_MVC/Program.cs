@@ -3,7 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews(r =>
 {
-    r.Filters.Add<SCscCL_MVC.WebInfra.FilterTest>();
+    //r.Filters.Add<SCscCL_MVC.WebInfra.FilterTest>();
 });
 
 var app = builder.Build();
