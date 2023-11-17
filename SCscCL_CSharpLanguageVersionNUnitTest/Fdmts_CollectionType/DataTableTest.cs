@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Linq;
 
 namespace CsLangVersion.Fdmts_CollectionType
 {
@@ -34,6 +33,74 @@ namespace CsLangVersion.Fdmts_CollectionType
 			DataColumn dc1 = new DataColumn("column1", System.Type.GetType("System.DateTime"));
 			DataColumn dc2 = new DataColumn("column1", typeof(DateTime));
 			dt.Columns.Add(dc);
+		}
+		/// <summary>
+		/// 【Ref】https://learn.microsoft.com/en-us/dotnet/api/system.data.datatable.columns?view=net-7.0&devlangs=csharp&f1url=%3FappId%3DDev16IDEF1%26l%3DEN-US%26k%3Dk(System.Data.DataTable.Columns)%3Bk(SolutionItemsProject)%3Bk(DevLang-csharp)%26rd%3Dtrue
+		/// </summary>
+		[Test]
+		public void DataColumn的遍历列()
+		{
+			DataTable table = new DataTable();
+			table.Columns.Add("colStr1", typeof(String));
+			table.Columns.Add("colStr2", System.Type.GetType("System.String"));
+			table.Columns.Add("colInt3", System.Type.GetType("System.Int32"));
+			table.Columns.Add("colDecimal4", typeof(decimal));
+			foreach (DataColumn col in table.Columns)
+			{
+				Console.WriteLine(col.ColumnName);
+			}
+		}
+
+		[Test]
+		public void 指定列类型DataTable遍历单元格设置为空()
+		{
+			DataTable dt = new DataTable();
+			dt.Columns.Add("职员ID", typeof(int));
+			dt.Columns.Add("入职日期", typeof(string));
+			dt.Columns.Add("离职日期", typeof(string));
+
+			dt.Rows.Add(0, "2023-04-06", "0");
+			dt.Rows.Add(44, "0", "0");
+			dt.Rows.Add(0, "0", "0");
+			dt.Rows.Add(223, "2023-07-18", "");
+
+			Console.WriteLine("清除前");
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				for (int j = 0; j < dt.Columns.Count; j++)
+				{
+					//需要判断String类型才可以制定为""。
+					if (dt.Columns[j].DataType == typeof(String) && dt.Rows[i][j].ToString() == "0")
+						dt.Rows[i][j] = "";
+				}
+			}
+			Console.WriteLine("清除后");
+
+		}
+
+		[Test]
+		public void 不指定列类型DataTable遍历单元格()
+		{
+			DataTable dt = new DataTable();
+			dt.Columns.Add("职员ID");
+			dt.Columns.Add("入职日期");
+			dt.Columns.Add("离职日期");
+
+			dt.Rows.Add(121, "2023-04-06", "0");
+			dt.Rows.Add(44, "0", "0");
+			dt.Rows.Add(0, "0", "0");
+			dt.Rows.Add(223, "2023-07-18", "");
+
+			Console.WriteLine("清除前");
+			for (int i = 0; i < dt.Rows.Count; i++)
+			{
+				for (int j = 0; j < dt.Columns.Count; j++)
+				{
+					if (dt.Rows[i][j].ToString() == "0")
+						dt.Rows[i][j] = "";
+				}
+			}
+			Console.WriteLine("清除后");
 
 		}
 
@@ -67,6 +134,8 @@ namespace CsLangVersion.Fdmts_CollectionType
 				foreach (var item in foundRows)
 				{
 					resTable.Rows.Add(item);
+					//当一个DataRow属于多个Table后会包异常，如果Add的时候使用item.ItemArray则不会有这个异常。
+					//resTable.Rows.Add(item.ItemArray);
 				}
 			}
 			catch (Exception ex)
@@ -109,10 +178,8 @@ namespace CsLangVersion.Fdmts_CollectionType
 			dt.Rows.Add();
 			//3.通过行框架创建并赋值
 			dt.Rows.Add("张三", DateTime.Now);//Add里面参数的数据顺序要和dt中的列的顺序对应 
-
-			//4.通过复制dt2表的某一行来创建
-			// dt.Rows.Add(dt2.Rows[i].ItemArray);
-
+																			//4.通过复制dt2表的某一行来创建
+																			// dt.Rows.Add(dt2.Rows[i].ItemArray);
 		}
 
 
