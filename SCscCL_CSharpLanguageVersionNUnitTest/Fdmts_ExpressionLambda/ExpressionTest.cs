@@ -166,9 +166,9 @@ namespace CsLangVersion.Fdmts_ExpressionLambda
             var query = new List<int>().AsQueryable();
             query = query.Where(c => c > 1);
             new List<int>().Where(i => i > 1);
-            //可见以下的Where方法的定义
-            //public static IQueryable<TSource> Where<TSource>(this IQueryable<TSource> source, Expression<Func<TSource, bool>> predicate)
-        }
+						//可见以下的Where方法的定义
+						//public static IQueryable<TSource> Where<TSource>(this IQueryable<TSource> source, Expression<Func<TSource, bool>> predicate)
+				}
 
         private class People
         {

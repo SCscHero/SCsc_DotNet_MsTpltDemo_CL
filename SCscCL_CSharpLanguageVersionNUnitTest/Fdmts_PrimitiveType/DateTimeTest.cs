@@ -17,7 +17,7 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 		}
 	}
 
-	public partial class DateTimeTest
+	internal partial class DateTimeTest
 	{
 		private DateTime LastDayOfWeek(DateTime _date, DayOfWeek dayofweek)
 		{

@@ -3,7 +3,7 @@ using System;
 
 namespace CsLangVersion.Fdmts_PrimitiveType
 {
-	public partial class DateTimeTest
+	internal partial class DateTimeTest
 	{
 		[TestCase(2023, 10, 29, DayOfWeek.Sunday)]
 		[TestCase(2023, 10, 30, DayOfWeek.Monday)]
@@ -40,8 +40,6 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 			return currentDate.AddDays(1 - (currentDate.DayOfWeek == 0 ? 7 : (int)currentDate.DayOfWeek) + (edow == 0 ? 6 : (int)edow - 1));
 		}
 
-
-
 		[TestCase(2023, 10, 31, 2023, 11, 2, DayOfWeek.Thursday)]
 		[TestCase(2023, 10, 29, 2023, 10, 23, DayOfWeek.Monday)]
 		[TestCase(2023, 10, 29, 2023, 10, 29, DayOfWeek.Sunday)]
@@ -71,13 +69,35 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 		{
 			DateTime testDt = new DateTime(inputYear, inputMonth, inputDay);
 			DateTime expectedDt = new DateTime(eYear, eMonth, eDay);
-			var dowInt = testDt.DayOfWeek == 0 ? 7 : (int)testDt.DayOfWeek;
 			DateTime resDt = GetLastWeekDateInChina(testDt, edow);
 			Assert.True(0 == DateTime.Compare(expectedDt.Date, resDt.Date));
 
 		}
+		/// <summary>
+		/// 基于setTime获取X周以前的星期Y
+		/// </summary>
+		/// <param name="setTime">基准时间</param>
+		/// <param name="inputX_Week">X周以前</param>
+		/// <param name="edow">星期Y</param>
+		/// <returns></returns>
+		public DateTime GetXWeekBeforeBySetTimeInChina(DateTime setTime, int inputX_Week, DayOfWeek edow)
+		{
+			return setTime.AddDays(1 - (setTime.DayOfWeek == 0 ? 7 : (int)setTime.DayOfWeek) + (edow == 0 ? -1 : (int)edow - 8) - (inputX_Week - 1) * 7);
+		}
 
-
+		[TestCase(2023, 10, 29, 2023, 10, 13, DayOfWeek.Friday, 2)]
+		[TestCase(2023, 10, 29, 2023, 10, 9, DayOfWeek.Monday, 2)]
+		[TestCase(2023, 10, 29, 2023, 10, 16, DayOfWeek.Monday, 1)]
+		[TestCase(2023, 10, 29, 2023, 10, 22, DayOfWeek.Sunday, 1)]
+		[TestCase(2023, 10, 30, 2023, 10, 29, DayOfWeek.Sunday, 1)]
+		[Test]
+		public void 中式查询X周以前时间(int inputYear, int inputMonth, int inputDay, int eYear, int eMonth, int eDay, DayOfWeek edow, int inputX_Week)
+		{
+			DateTime testDt = new DateTime(inputYear, inputMonth, inputDay);
+			DateTime expectedDt = new DateTime(eYear, eMonth, eDay);
+			DateTime resDt = GetXWeekBeforeBySetTimeInChina(testDt, inputX_Week, edow);
+			Assert.True(0 == DateTime.Compare(expectedDt.Date, resDt.Date));
+		}
 
 	}
 }
