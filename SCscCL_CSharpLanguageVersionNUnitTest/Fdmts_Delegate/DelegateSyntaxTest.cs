@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CsLangVersion.Fdmts_Delegate
 {
-	internal class DelegateTest
+	internal class DelegateSyntaxTest
 	{
 
 		public delegate void MyDelegate(string message);
