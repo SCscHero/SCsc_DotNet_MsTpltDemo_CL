@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,21 +52,21 @@ namespace CsLangVersion.Fdmts_CollectionType
 			{
 				List<Eq002_Person> people = new List<Eq002_Person>
 				{ new Eq002_Person { LastName = "Haas",
-					   Pets = new Eq002_Pet[] { new Eq002_Pet { Name="Barley", Age=10 },
-										  new Eq002_Pet { Name="Boots", Age=14 },
-										  new Eq002_Pet { Name="Whiskers", Age=6 }}},
-				  new Eq002_Person { LastName = "Fakhouri",
-					   Pets = new Eq002_Pet[] { new Eq002_Pet { Name = "Snowball", Age = 1}}},
-				  new Eq002_Person { LastName = "Antebi",
-					   Pets = new Eq002_Pet[] { }},
-				  new Eq002_Person { LastName = "Philips",
-					   Pets = new Eq002_Pet[] { new Eq002_Pet { Name = "Sweetie", Age = 2},
-										  new Eq002_Pet { Name = "Rover", Age = 13}} }
+						 Pets = new Eq002_Pet[] { new Eq002_Pet { Name="Barley", Age=10 },
+											new Eq002_Pet { Name="Boots", Age=14 },
+											new Eq002_Pet { Name="Whiskers", Age=6 }}},
+					new Eq002_Person { LastName = "Fakhouri",
+						 Pets = new Eq002_Pet[] { new Eq002_Pet { Name = "Snowball", Age = 1}}},
+					new Eq002_Person { LastName = "Antebi",
+						 Pets = new Eq002_Pet[] { }},
+					new Eq002_Person { LastName = "Philips",
+						 Pets = new Eq002_Pet[] { new Eq002_Pet { Name = "Sweetie", Age = 2},
+											new Eq002_Pet { Name = "Rover", Age = 13}} }
 		};
 				// Determine which people have a non-empty Pet array.
 				IEnumerable<string> names = from person in people
-											where person.Pets.Any()
-											select person.LastName;
+																		where person.Pets.Any()
+																		select person.LastName;
 
 				//筛选Pets有值的Person
 				foreach (string name in names)
@@ -99,8 +98,8 @@ namespace CsLangVersion.Fdmts_CollectionType
 		public void Eq003_ListM_AnyWithArguments()
 		{
 			Eq003_Pet[] pets = { new Eq003_Pet { Name="Barley", Age=8, Vaccinated=true },
-		  new Eq003_Pet { Name="Boots", Age=4, Vaccinated=false },
-		  new Eq003_Pet { Name="Whiskers", Age=1, Vaccinated=false } };
+			new Eq003_Pet { Name="Boots", Age=4, Vaccinated=false },
+			new Eq003_Pet { Name="Whiskers", Age=1, Vaccinated=false } };
 			// Determine whether any pets over age 1 are also unvaccinated.
 			bool unvaccinated = pets.Any(p => p.Age > 1 && p.Vaccinated == false);
 
@@ -122,13 +121,13 @@ namespace CsLangVersion.Fdmts_CollectionType
 		{
 			// Create an array of Pets.
 			Eq004_Pet[] pets = { new Eq004_Pet { Name="Barley", Age=10 },
-				   new Eq004_Pet { Name="Boots", Age=4 },
-				   new Eq004_Pet { Name="Whiskers", Age=6 } };
+					 new Eq004_Pet { Name="Boots", Age=4 },
+					 new Eq004_Pet { Name="Whiskers", Age=6 } };
 
 			// Determine whether all pet names
 			// in the array start with 'B'.
 			bool allStartWithB = pets.All(pet =>
-											  pet.Name.StartsWith("B"));
+												pet.Name.StartsWith("B"));
 
 			Console.WriteLine(
 				"{0} pet names start with 'B'.",
@@ -265,15 +264,15 @@ namespace CsLangVersion.Fdmts_CollectionType
 		public void Eq008_ListEntityType_Distinct_Entity实现比较器后去重()
 		{
 			Eq008_Product[] products = { new Eq008_Product { Name = "apple", Code = 9 },
-					   new Eq008_Product { Name = "orange", Code = 4 },
-					   new Eq008_Product { Name = "apple", Code = 9 },
-					   new Eq008_Product { Name = "orange", Code = 4 },
-					   new Eq008_Product { Name = "orange", Code = 4 },
-					   new Eq008_Product { Name = "apple", Code = 25 },
-					   new Eq008_Product { Name = "orange", Code = 4 },
-					   new Eq008_Product { Name = "apple11", Code = 25 },
-					   new Eq008_Product { Name = "orange", Code = 4 },
-					   new Eq008_Product { Name = "lemon", Code = 12 } };
+						 new Eq008_Product { Name = "orange", Code = 4 },
+						 new Eq008_Product { Name = "apple", Code = 9 },
+						 new Eq008_Product { Name = "orange", Code = 4 },
+						 new Eq008_Product { Name = "orange", Code = 4 },
+						 new Eq008_Product { Name = "apple", Code = 25 },
+						 new Eq008_Product { Name = "orange", Code = 4 },
+						 new Eq008_Product { Name = "apple11", Code = 25 },
+						 new Eq008_Product { Name = "orange", Code = 4 },
+						 new Eq008_Product { Name = "lemon", Code = 12 } };
 			// Exclude duplicates.
 			IEnumerable<Eq008_Product> noduplicates =
 				products.Distinct(new Eq008_ProductComparer());
@@ -289,14 +288,72 @@ namespace CsLangVersion.Fdmts_CollectionType
 		public void Eq008_ListEntityType_Distinct_使用Linq去重()
 		{
 			var list1 = (from p in Eq8list
-						 group p by new { p.Id, p.Name, p.Age } into g
-						 select g).ToList();
+									 group p by new { p.Id, p.Name, p.Age } into g
+									 select g).ToList();
 			foreach (var item in list1)
 			{
 				Console.WriteLine("Id:" + item.Key.Id + ", Name:" + item.Key.Name + ", Age:" + item.Key.Age);
 			}
 		}
 
+		public class Eq_009_Pet
+		{
+			public string Name { get; set; }
+			public double Age { get; set; }
+		}
+		public class Eq_009_Person
+		{
+			public string Name { get; set; }
+			public int Age { get; private set; }
+			public string Sex { get; set; }
+			public int Money { get; set; }
 
+			public Eq_009_Person(string name, string sex, int age, int money)
+			{
+				Name = name;
+				Age = age;
+				Sex = sex;
+				Money = money;
+			}
+		}
+
+		[Test]
+		public void Eq_009_List使用GroupBy示例()
+		{
+			List<Eq_009_Pet> petsList =
+			 new List<Eq_009_Pet>{ new Eq_009_Pet { Name="Barley", Age=8.3 },
+			 new Eq_009_Pet { Name="Barley", Age=8.3 },
+			 new Eq_009_Pet { Name="Barley", Age=8.3 },
+			 new Eq_009_Pet { Name="Boots", Age=4.9 },
+				new Eq_009_Pet { Name="废物", Age=8.3 },
+				new Eq_009_Pet { Name="废物", Age=4.9 },
+				new Eq_009_Pet { Name="混混", Age=4.9 },
+				new Eq_009_Pet { Name="Boots", Age=5.8 },
+				new Eq_009_Pet { Name="Boots", Age=6.9 },
+				new Eq_009_Pet { Name="Boots", Age=7.9 },
+				new Eq_009_Pet { Name="Whiskers", Age=1.5 },
+				new Eq_009_Pet { Name="Daisy", Age=4.3 } };
+			//去重Name输出该列
+			var distinctList = petsList.GroupBy(pet => pet.Name).ToList();
+			//分组求和：按宠物名输出分别出现多少次；
+			var petName_CountList = petsList.GroupBy(pet => pet.Name).Select(g => (new { name = g.Key, count = g.Count(), ageC = g.Sum(item => item.Age) }));
+
+			List<Eq_009_Person> personsList = new List<Eq_009_Person>();
+			personsList.Add(new Eq_009_Person("张三", "男", 20, 1500));
+			personsList.Add(new Eq_009_Person("王成", "男", 32, 3200));
+			personsList.Add(new Eq_009_Person("李丽", "女", 19, 1700));
+			personsList.Add(new Eq_009_Person("何英", "女", 35, 3600));
+			personsList.Add(new Eq_009_Person("何英", "女", 18, 1600));
+			//分组求和：按性别输出男女分别多少；
+			//写法1：Lambda 表达式写法（推荐）  
+			var ls = personsList.GroupBy(a => a.Name).Select(g => (new { name = g.Key, count = g.Count(), ageC = g.Sum(item => item.Age), moneyC = g.Sum(item => item.Money) }));
+			//写法2：类SQL语言写法 最终编译器会把它转化为lamda表达式  
+			var ls2 = from ps in personsList
+								group ps by ps.Name
+									 into g
+								select new { name = g.Key, count = g.Count(), ageC = g.Sum(item => item.Age), moneyC = g.Sum(item => item.Money) };
+			Console.WriteLine();
+
+		}
 	}
 }
