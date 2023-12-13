@@ -42,10 +42,10 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 				StudentName = "小华",
 				ClassName = "软件一班"
 			};
-            //.Net8·SYSLIB0011:'BinaryFormatter' is obsolete: 'BinaryFormatter serialization is obsolete and should not be used. See https://aka.ms/binaryformatter for more information.' 
-            //BinaryFormatter serializer = new BinaryFormatter();
+			//.Net8·SYSLIB0011:'BinaryFormatter' is obsolete: 'BinaryFormatter serialization is obsolete and should not be used. See https://aka.ms/binaryformatter for more information.' 
+			//BinaryFormatter serializer = new BinaryFormatter();
 
-            MemoryStream memStream = new MemoryStream();
+			MemoryStream memStream = new MemoryStream();
 			//SYSLIB0011:“BinaryFormatter。Serialize(Stream, object)'已过时:'BinaryFormatter序列化已过时，不应使用。更多信息请参见https://aka.ms/binaryformatter。
 			//serializer.Serialize(memStream, student);
 
