@@ -19,6 +19,14 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 			Console.WriteLine(tsSub.TotalSeconds);
 			Console.WriteLine(tsSub.TotalMinutes);
 			Console.WriteLine(tsSub.TotalHours);
+
+		}
+
+		[Test]
+		public void 初始化TimeSpan()
+		{
+			TimeSpan ts = new TimeSpan(0, 30, 0);
+			Console.WriteLine(ts.ToString());
 		}
 	}
 }

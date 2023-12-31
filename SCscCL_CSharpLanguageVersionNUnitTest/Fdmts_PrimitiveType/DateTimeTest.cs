@@ -53,6 +53,12 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 			return DATE.AddDays(((int)DOW) - ((int)(DATE.DayOfWeek)) + adjustment);
 		}
 
+		[Test]
+		public void 时间输出成毫秒格式()
+		{
+			Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssffff"));//24小时
+			Console.WriteLine(DateTime.Now.ToString("yyyyMMddhhmmssffff"));//12小时
+		}
 
 
 		[Test]
