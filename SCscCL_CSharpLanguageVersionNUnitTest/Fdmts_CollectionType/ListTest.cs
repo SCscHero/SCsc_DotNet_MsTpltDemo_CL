@@ -16,6 +16,7 @@ namespace CsLangVersion.Fdmts_CollectionType
 		{
 			List<int> intList1 = new List<int>() { 1, 2, 3, 4, 5, 7, 6, 7, 8 };
 			List<int> intList2 = new List<int>() { 60, 70 };
+			//public void AddRange(IEnumerable<T> collection)
 			intList1.AddRange(intList2);
 			if (intList1.Count == 11)
 			{

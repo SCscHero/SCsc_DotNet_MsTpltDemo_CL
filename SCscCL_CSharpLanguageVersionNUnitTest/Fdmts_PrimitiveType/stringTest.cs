@@ -7,10 +7,20 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 	internal class stringTest
 	{
 		[Test]
+		public void LastIndexOf使用()
+		{
+			var res = "ABCDEFG".LastIndexOf('.');//不存在则返回-1
+			var res1 = "ABCD.EF.G.PDF".LastIndexOf('.');//不存在则返回位数
+		}
+
+		[Test]
 		public void 无法实现_字符串Dollar和艾特语法糖与三目混用()
 		{
 			bool judge = true;
+			//【error example】RootCase是由于冒号在内插字符串中是表示格式的，例如string.Format中的格式转化或ToString()中的格式转换；
 			//Console.WriteLine($@"aaa{judge?"11" :"22"}bbb");
+			//【Solution】【Ref】https://www.coder.work/article/225796
+			Console.WriteLine($@"aaa{(judge ? "11" : "22")}bbb");
 		}
 
 		/// <summary>
