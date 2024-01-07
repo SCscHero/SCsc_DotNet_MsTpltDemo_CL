@@ -8,6 +8,51 @@ namespace CsLangVersion.Fdmts_CollectionType
 	{
 
 
+		private class Pet
+		{
+			public string Name { get; set; }
+			public int Age { get; set; }
+		}
+		private class Person
+		{
+			public string PName { get; set; }
+			public Pet[] Pets { get; set; }
+		}
+		Person[] duplicatePeopleArray =
+		{ new Person { PName = "Haas",
+			Pets = new Pet[] { new Pet { Name="Barley", Age=10 },
+				new Pet { Name="Boots", Age=14 },
+				new Pet { Name="Whiskers", Age=6 }}},
+
+					new Person { PName = "Fakhouri",
+						Pets = new Pet[] { new Pet { Name = "Snowball", Age = 1}}},
+					new Person { PName = "Antebi",
+						Pets = new Pet[] { }},
+					new Person { PName = "Philips",
+						Pets = new Pet[] { new Pet { Name = "Sweetie", Age = 2},
+											new Pet { Name = "Rover", Age = 13}} },
+					new Person { PName = "Philips",
+						Pets = new Pet[] { new Pet { Name = "GouTo1", Age = 5},
+											new Pet { Name = "Rover", Age = 13}} },
+					new Person { PName = "Philips",
+						Pets = new Pet[] { new Pet { Name = "GouTo1", Age = 5},
+											new Pet { Name = "Rover", Age = 13}} },
+					new Person { PName = "Fakhouri",
+						Pets = new Pet[] { new Pet { Name = "Snowball", Age = 1}}},
+
+		};
+
+		//【Ref】https://www.zhihu.com/question/31201024
+		//【Ref】https://blog.csdn.net/weixin_38211198/article/details/93488099
+		[Test]
+		public void List根据姓名判断是否存在重复()
+		{
+			List<Person> list = duplicatePeopleArray.ToList();
+			//【方法1】
+			Console.WriteLine(list.GroupBy(i => i.PName).Any(r => r.Count() > 1));
+			//【方法2】
+			Console.WriteLine(list.Select(i => i.PName).Distinct().Count() != list.Count());
+		}
 		/// <summary>
 		/// 结果集合并方法：Range
 		/// </summary>

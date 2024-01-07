@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CsLangVersion.Fdmts_CollectionType
 {
@@ -8,6 +9,14 @@ namespace CsLangVersion.Fdmts_CollectionType
 	/// </summary>
 	internal class ArraysTest
 	{
+		int[] DuplicateArray = new int[10] { 1, 5, 7, 8, 2, 4, 5, 8, 8, 2 };
+		[Test]
+		public void Eq097_判断Array中是否重复()
+		{
+			Console.WriteLine(DuplicateArray.Count() != DuplicateArray.Distinct().Count());
+			Console.WriteLine(DuplicateArray.GroupBy(i => i).Any(g => g.Count() > 1));
+		}
+
 		[Test]
 		public void Eq100_Array中不同形式的数组()
 		{
@@ -36,9 +45,9 @@ namespace CsLangVersion.Fdmts_CollectionType
 		[Test]
 		public void Eq101_Array中新增元素()
 		{
-			var strings = new string[] {};
-			strings=strings.Append("xxxx").ToArray();
-        }
+			var strings = new string[] { };
+			strings = strings.Append("xxxx").ToArray();
+		}
 		/// <summary>
 		/// https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/concepts/linq/how-to-count-occurrences-of-a-word-in-a-string-linq
 		/// </summary>
@@ -47,10 +56,10 @@ namespace CsLangVersion.Fdmts_CollectionType
 		{
 			string[] strings = new string[] { "BUG", "BUG", "BUG", "BUG", "BUG", "BUG", "CR", "CR", "CR", "CR", "CR", "CR", "Task", "Task", "Task", "Task", "Task", "Task", "BUG", "BUG", "BUG", "CR", "CR", "CR", "CR" };
 			var resBugCount = (from type in strings
-							  where type.Equals("BUG", StringComparison.InvariantCultureIgnoreCase)
-							  select type).ToArray().Count();
-            Console.WriteLine();
-        }
+												 where type.Equals("BUG", StringComparison.InvariantCultureIgnoreCase)
+												 select type).ToArray().Count();
+			Console.WriteLine();
+		}
 
 
 	}
