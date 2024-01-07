@@ -22,14 +22,6 @@ namespace CsLangVersion.Fdmts_CollectionType
 		HashSet<string> privateTeams = new HashSet<string>() { "Red Bull", "Toro Rosso", "Spyker", "Super Aguri" };
 		string[] duplicateStrings = { "aa", "aa", "bb", "c", "dd", "bb", "aa", "DD", "ff", "cc" };
 
-		private bool IsDuplicate(IEnumerator<string> strings)
-		{
-			var set = new HashSet<string>();
-			while (strings.MoveNext())
-				if (set.Add(strings.Current) == false)
-					return true;
-			return false;
-		}
 
 		private bool IsDuplicate(string[] strings)
 		{
