@@ -6,8 +6,16 @@ namespace CsLangVersion.Fdmts_CollectionType
 {
 	public class ListTest
 	{
-
-
+		[Test]
+		public void ExistTest()
+		{
+			var ints = new List<int>() { 3 };
+			var intsNotContain = new List<int>() { 4, 5 };
+			var intsContain = new List<int>() { 3, 2 };
+			var existRes = ints.Where(r => !intsNotContain.Exists(r1 => r1 == r)).ToList();
+			var existRes1 = ints.Where(r => !intsContain.Exists(r1 => r1 == r)).ToList();
+			Console.WriteLine();
+		}
 		private class Pet
 		{
 			public string Name { get; set; }
