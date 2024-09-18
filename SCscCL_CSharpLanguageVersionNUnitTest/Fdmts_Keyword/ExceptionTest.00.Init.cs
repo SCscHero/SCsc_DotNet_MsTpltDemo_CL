@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CsLangVersion.Fdmts_Keyword
 {
-	internal class ExceptionTest
+	internal partial class ExceptionTest
 	{
 		[Test]
 		public void Exception是所有异常类型的基类()
