@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace CsLangVersion.Fdmts_Reflection
 {
-    public class ReflectionTest
+    public partial class ReflectionTest
     {
         [SetUp]
         public void Setup()
