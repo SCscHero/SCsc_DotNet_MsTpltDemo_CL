@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CsLangVersion.Fdmts_CollectionType
 {
-	public class ListTest
+	public partial class ListTest
 	{
 		[Test]
 		public void ExistTest()
@@ -16,39 +16,7 @@ namespace CsLangVersion.Fdmts_CollectionType
 			var existRes1 = ints.Where(r => !intsContain.Exists(r1 => r1 == r)).ToList();
 			Console.WriteLine();
 		}
-		private class Pet
-		{
-			public string Name { get; set; }
-			public int Age { get; set; }
-		}
-		private class Person
-		{
-			public string PName { get; set; }
-			public Pet[] Pets { get; set; }
-		}
-		Person[] duplicatePeopleArray =
-		{ new Person { PName = "Haas",
-			Pets = new Pet[] { new Pet { Name="Barley", Age=10 },
-				new Pet { Name="Boots", Age=14 },
-				new Pet { Name="Whiskers", Age=6 }}},
-
-					new Person { PName = "Fakhouri",
-						Pets = new Pet[] { new Pet { Name = "Snowball", Age = 1}}},
-					new Person { PName = "Antebi",
-						Pets = new Pet[] { }},
-					new Person { PName = "Philips",
-						Pets = new Pet[] { new Pet { Name = "Sweetie", Age = 2},
-											new Pet { Name = "Rover", Age = 13}} },
-					new Person { PName = "Philips",
-						Pets = new Pet[] { new Pet { Name = "GouTo1", Age = 5},
-											new Pet { Name = "Rover", Age = 13}} },
-					new Person { PName = "Philips",
-						Pets = new Pet[] { new Pet { Name = "GouTo1", Age = 5},
-											new Pet { Name = "Rover", Age = 13}} },
-					new Person { PName = "Fakhouri",
-						Pets = new Pet[] { new Pet { Name = "Snowball", Age = 1}}},
-
-		};
+	
 
 		//【Ref】https://www.zhihu.com/question/31201024
 		//【Ref】https://blog.csdn.net/weixin_38211198/article/details/93488099
@@ -78,18 +46,6 @@ namespace CsLangVersion.Fdmts_CollectionType
 		}
 
 
-		#region Eq002_TestModel
-		private class Eq002_Pet
-		{
-			public string Name { get; set; }
-			public int Age { get; set; }
-		}
-		private class Eq002_Person
-		{
-			public string LastName { get; set; }
-			public Eq002_Pet[] Pets { get; set; }
-		}
-		#endregion
 
 		/// <summary>
 		/// Any无参函数：判断集合是否为空
@@ -104,19 +60,6 @@ namespace CsLangVersion.Fdmts_CollectionType
 					hasElements ? "is not" : "is");
 			}
 			{
-				List<Eq002_Person> people = new List<Eq002_Person>
-				{ new Eq002_Person { LastName = "Haas",
-						 Pets = new Eq002_Pet[] { new Eq002_Pet { Name="Barley", Age=10 },
-											new Eq002_Pet { Name="Boots", Age=14 },
-											new Eq002_Pet { Name="Whiskers", Age=6 }}},
-					new Eq002_Person { LastName = "Fakhouri",
-						 Pets = new Eq002_Pet[] { new Eq002_Pet { Name = "Snowball", Age = 1}}},
-					new Eq002_Person { LastName = "Antebi",
-						 Pets = new Eq002_Pet[] { }},
-					new Eq002_Person { LastName = "Philips",
-						 Pets = new Eq002_Pet[] { new Eq002_Pet { Name = "Sweetie", Age = 2},
-											new Eq002_Pet { Name = "Rover", Age = 13}} }
-		};
 				// Determine which people have a non-empty Pet array.
 				IEnumerable<string> names = from person in people
 																		where person.Pets.Any()

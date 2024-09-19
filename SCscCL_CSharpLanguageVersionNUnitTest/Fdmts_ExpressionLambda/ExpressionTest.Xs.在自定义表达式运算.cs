@@ -112,7 +112,7 @@ namespace CsLangVersion.Fdmts_ExpressionLambda
     /// <summary>s
     /// 表达式目录树
     /// </summary>
-    internal class ExpressionTest
+    internal partial class ExpressionTest
     {
         [SetUp]
         public void Setup()

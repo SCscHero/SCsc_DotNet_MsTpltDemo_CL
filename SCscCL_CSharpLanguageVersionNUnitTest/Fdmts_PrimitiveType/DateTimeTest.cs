@@ -54,6 +54,12 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 		}
 
 		[Test]
+		public void 时间输出成文件时间()
+		{
+			Console.WriteLine(DateTime.Now.ToFileTime());
+		}
+
+		[Test]
 		public void 时间输出成毫秒格式()
 		{
 			Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmssffff"));//24小时

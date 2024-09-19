@@ -5,6 +5,14 @@ namespace CsLangVersion.Fdmts_PrimitiveType
 
 	internal partial class DateTimeTest
 	{
+
+		[Test]
+		public void TimeSpan常用操作()
+		{
+			var ts = TimeSpan.FromSeconds(30);
+			Console.WriteLine(ts.TotalMicroseconds);
+		}
+
 		[Test]
 		public void 时间差计算()
 		{
