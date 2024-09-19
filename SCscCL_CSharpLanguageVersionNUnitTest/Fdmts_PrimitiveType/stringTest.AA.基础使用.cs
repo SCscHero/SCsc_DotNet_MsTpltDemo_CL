@@ -4,13 +4,13 @@ using System.Text.RegularExpressions;
 
 namespace CsLangVersion.Fdmts_PrimitiveType
 {
-	internal class stringTest
+	internal partial class stringTest
 	{
 		[Test]
 		public void LastIndexOf使用()
 		{
-			var res = "ABCDEFG".LastIndexOf('.');//不存在则返回-1
-			var res1 = "ABCD.EF.G.PDF".LastIndexOf('.');//不存在则返回位数
+			int res = "ABCDEFG".LastIndexOf('.');//不存在则返回-1
+      int res1 = "ABCD.EF.G.PDF".LastIndexOf('.');//不存在则返回位数
 		}
 
 		[Test]
