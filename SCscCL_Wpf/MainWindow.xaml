@@ -4,16 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCscCL_Wpf"
-        mc:Ignorable="d" Height="120" Width="350"
-        Title="SCscWPF" Topmost="True"
+        mc:Ignorable="d" Height="40" Width="250"
+        Title="SCscWPF" Topmost="True" AllowsTransparency="True" WindowStyle="None"
+        Loaded="Window_Loaded"
         >
     <!--Height="450" Width="800" 不显示设置高度和宽度则为自适应-->
     <!--Topmost为PIN在其他窗口前的关键属性-->
     <!--WindowStyle="None" AllowsTransparency="True" Background="Transparent"-->
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBlock x:Name="timeTextBlock" FontSize="24" Text="时间展示"/>
-            <TextBlock x:Name="timeTextState" FontSize="24"  Text="初始化中..."/>
+            <TextBlock x:Name="timeTextBlock" FontSize="15" Text="时间展示"/>
+            <TextBlock x:Name="timeTextState" FontSize="15"  Text="初始化中..."/>
         </StackPanel>
    </Grid>
 </Window>

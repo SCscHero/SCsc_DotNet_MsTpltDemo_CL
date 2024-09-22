@@ -11,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="WebInfra\Filter\Handler.cs" />
+    <None Include="WebInfra\Filter\ActionFilterHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Login\" />
   </ItemGroup>
 
 </Project>

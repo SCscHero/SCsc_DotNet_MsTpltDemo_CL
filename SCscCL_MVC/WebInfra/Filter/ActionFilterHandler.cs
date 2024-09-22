@@ -2,7 +2,7 @@
 
 namespace SCscCL_MVC.WebInfra.Filter
 {
-    public class Handler : Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute
+    public class ActionFilterHandler : Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute
 	{
         //1/5
         public override void OnActionExecuting(ActionExecutingContext context)

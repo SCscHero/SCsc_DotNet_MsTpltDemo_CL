@@ -89,7 +89,20 @@ namespace SCscCL_Wpf {
       timer.Stop();
       base.OnClosed(e);
     }
+    private void Window_Loaded(object sender, RoutedEventArgs e) {
+      // 获取当前工作区（屏幕）的尺寸  
+      var helper = new WindowInteropHelper(this);
+      double screenWidth = SystemParameters.PrimaryScreenWidth;
+      double screenHeight = SystemParameters.PrimaryScreenHeight;
 
+      // 计算右下角的位置  
+      // 注意：这里假设你不希望窗口超出屏幕范围，所以使用屏幕的宽度和高度减去窗口的宽度和高度  
+      this.Left=screenWidth-this.Width-230;
+      this.Top=screenHeight-this.Height;
+
+      // 如果你想要让窗口在任务栏上方显示，可以稍微调整Top的值  
+      // 例如：this.Top = rect.Height - this.Height - SystemParameters.WorkArea.Bottom;  
+    }
 
   }
 }
