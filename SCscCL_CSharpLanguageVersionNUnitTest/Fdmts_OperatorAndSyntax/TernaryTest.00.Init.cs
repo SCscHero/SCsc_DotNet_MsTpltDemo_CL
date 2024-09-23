@@ -2,8 +2,7 @@
 
 namespace CsLangVersion.Fdmts_Operator
 {
-	internal class 三目运算符Test
-	{
+	internal partial class TernaryTest {
 		[Test]
 		public void 三目运算符嵌套()
 		{
