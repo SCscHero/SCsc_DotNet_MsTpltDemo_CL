@@ -1,17 +1,55 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!--Suppose you get the environment variable directly-->
+    <!--<USERPROFILE>$([System.Environment]::GetEnvironmentVariable('USERPROFILE'))</USERPROFILE>-->
+    <USERPROFILE1>$(USERPROFILE)</USERPROFILE1>
+    <UQQI015 Condition="'$(UFQI015)' != ''">$(UFQI015)</UQQI015>
+    <UQQI015 Condition="'$(UFQI015)' == ''">Suppose you have these libraries</UQQI015>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FakesAssemblies\**" />
+    <EmbeddedResource Remove="FakesAssemblies\**" />
+    <None Remove="FakesAssemblies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="17.5.0-beta.23060.1" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.8" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
   </ItemGroup>
 
-</Project>
+  <ItemGroup>
+    <Folder Include="HtmlDecode\BenchmarkCompare\" />
+    <Folder Include="ArrayAlgorithm\BruteForce\" />
+    <Folder Include="ArrayAlgorithm\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\UFQI_015_SCscBlogMSAPP\Aplc4FileTransHp\Aplc4FileTransHp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--It is assumed to be imported through a dll-->
+    <Reference Include="Aplc4NugetPack">
+      <HintPath>$(UFQI015)\Uni_Bin\Debug\netstandard2.1\Aplc4NugetPack.dll</HintPath>
+    </Reference>
+    <!--<Reference Include="Aplc4FileTransHp">
+      <HintPath>$(UFQI015)\Uni_Bin\Debug\netstandard2.1\Aplc4FileTransHp.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>$(USERPROFILE1)\.nuget\packages\npoi\2.6.0\lib\netstandard2.1\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML">
+      <HintPath>$(USERPROFILE1)\.nuget\packages\npoi\2.6.0\lib\netstandard2.1\NPOI.OOXML.dll</HintPath>
+    </Reference>-->
+  </ItemGroup>
+  </Project>
