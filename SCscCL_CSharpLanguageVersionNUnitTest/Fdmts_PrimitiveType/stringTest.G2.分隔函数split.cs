@@ -13,5 +13,13 @@ namespace CsLangVersion.Fdmts_PrimitiveType {
       }
     }
 
+    [Test]
+    public void split分隔函数遍历结果集() {
+
+      System.Console.WriteLine(@$"UT Excuted {nameof(stringTest)}_{nameof(split分隔函数遍历结果集)}");
+      System.Console.WriteLine(@$"Finished local time is {DateTime.Now.ToString("HH:mm:ss")};");
+    }
+
+
   }
 }

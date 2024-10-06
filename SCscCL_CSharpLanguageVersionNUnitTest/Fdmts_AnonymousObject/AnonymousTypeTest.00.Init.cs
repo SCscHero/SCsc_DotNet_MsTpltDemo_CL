@@ -9,19 +9,28 @@ using System.Threading.Tasks;
 namespace CsLangVersion.Fdmts_AnonymousObject {
   internal partial class AnonymousTypeTest {
     [Test]
-    public void 转换Table() {
+    public void ListObject转换Table() {
 
-      System.Console.WriteLine(@$"UT Excuted {nameof(AnonymousTypeTest)}_{nameof(转换Table)}");
+      System.Console.WriteLine(@$"UT Excuted {nameof(AnonymousTypeTest)}_{nameof(ListObject转换Table)}");
       List<object> listObject = new List<object>();
-      listObject.Add(new { Region = "SC北区", DLR = 499, DynamicColumns = "6658", PartABC = 111, PartDEF = 222, Total = 333 });
-      listObject.Add(new { Region = "SC西区", DLR = 429, DynamicColumns = "6228", PartABC = 333, PartDEF = 444, Total = 777 });
+      listObject.Add(new { Region = "SC北区", UserCount = 499, DynamicColumns = new Dictionary<string, int> {
+        ["apple"]=1,
+        ["banana"]=3,
+        ["cherry"]=5
+      }, PartABC = 111, PartDEF = 222, Total = 333 });
+      listObject.Add(new { Region = "SC西区", UserCount = 429, DynamicColumns = new Dictionary<string, int> {
+        ["apple"]=55,
+        ["banana"]=55,
+        ["cherry"]=22
+      }, PartABC = 333, PartDEF = 444, Total = 777 });
       DataTable dt = ToDataTable(listObject);
       System.Console.WriteLine(@$"Finished local time is {DateTime.Now.ToString("HH:mm:ss")};");
     }
 
 
     /// <summary>
-    /// 利用反射将List<object>转换成DataTable
+    /// 利用反射将List<object>转换成DataTable，通过识别属性名称及属性的数据类型
+    /// Tip: Basic data types are easier to work with, but Dictionary<string,int> types are more complex;
     /// </summary>
     /// <param name="list">泛类型集合</param>
     /// <returns></returns>
@@ -37,6 +46,7 @@ namespace CsLangVersion.Fdmts_AnonymousObject {
       }
       for(int i = 0; i<entityProperties.Length; i++) {
         dt.Columns.Add(entityProperties[i].Name);
+        //Special handling of Dictionary<string,int> types
         if(entityProperties[i].Name=="DynamicColumns") {
           if(entitys==null||entitys.Count<1) {
             continue;
@@ -55,7 +65,7 @@ namespace CsLangVersion.Fdmts_AnonymousObject {
       foreach(object entity in entitys) {
         int count = 0;
         if(entity.GetType()!=entityType) {
-          throw new Exception("要转换的集合元素类型不一致");
+          throw new Exception("要转换的集合元素存在类型不一致或不完全一致！");
         }
         object[] entityValues = new object[entityProperties.Length+dynamicLength-notExportLength];
         for(int i = 0; i<entityProperties.Length; i++) {
@@ -74,12 +84,10 @@ namespace CsLangVersion.Fdmts_AnonymousObject {
           } else {
             entityValues[i+count]=entityProperties[i].GetValue(entity, null);
           }
-
         }
         dt.Rows.Add(entityValues);
       }
       return dt;
     }
-
   }
 }
