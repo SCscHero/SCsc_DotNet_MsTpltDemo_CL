@@ -4,5 +4,5 @@
 
 10. Hpbms=hard problems
 40. Nd=Nuget dependency
-
+60. CDP=CommonDesignPatterns
 500.Mgt=Management

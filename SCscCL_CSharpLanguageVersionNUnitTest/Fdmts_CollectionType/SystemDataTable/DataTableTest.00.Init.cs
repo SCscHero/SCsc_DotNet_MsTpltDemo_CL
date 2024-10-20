@@ -3,7 +3,8 @@ using System.Data;
 
 namespace CsLangVersion.Fdmts_CollectionType.SystemDataTable
 {
-    public partial class DataTableTest
+  [TestFixture]
+  public partial class DataTableTest
     {
         //https://www.cnblogs.com/lgx5/p/4813436.html#:~:text=%E5%9C%A8C%23%E4%B8%AD%E8%A6%81%E5%AF%B9Datatable%E6%8E%92%E5%BA%8F%EF%BC%8C%E5%8F%AF%E4%BD%BF%E7%94%A8DefaultView%E7%9A%84Sort%E6%96%B9%E6%B3%95%E3%80%82,%E5%85%88%E8%8E%B7%E5%8F%96Datatable%E7%9A%84DefaultView%EF%BC%8C%E7%84%B6%E5%90%8E%E8%AE%BE%E7%BD%AE%E5%BE%97%E5%88%B0%E7%9A%84Dataview%E7%9A%84sort%E5%B1%9E%E6%80%A7%EF%BC%8C%E6%9C%80%E5%90%8E%E7%94%A8%E8%A7%86%E5%9B%BE%E7%9A%84ToTable%E6%96%B9%E6%B3%95%E5%B0%86%E6%8E%92%E5%A5%BD%E5%BA%8F%E7%9A%84dataview%E5%AF%BC%E5%87%BA%E4%B8%BADatatable%E3%80%82
         [Test]

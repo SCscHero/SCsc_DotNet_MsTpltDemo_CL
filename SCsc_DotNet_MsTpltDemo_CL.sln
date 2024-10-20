@@ -102,7 +102,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SCscCL_Wpf", "SCscCL_Wpf\SC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aspire", "Aspire", "{C3FEA30E-63CA-42E7-85AA-2571B51FADB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireStarterApp1.AppHost", "AspireStarterApp1\AspireStarterApp1.AppHost\AspireStarterApp1.AppHost.csproj", "{A80529CA-4CD0-4632-954E-B64FE176A563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireStarterApp1.AppHost", "AspireStarterApp1\AspireStarterApp1.AppHost\AspireStarterApp1.AppHost.csproj", "{A80529CA-4CD0-4632-954E-B64FE176A563}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireStarterApp1.ServiceDefaults", "AspireStarterApp1\AspireStarterApp1.ServiceDefaults\AspireStarterApp1.ServiceDefaults.csproj", "{81884241-8E07-41A7-9F3E-E399481CD3FB}"
 EndProject
@@ -114,17 +114,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspireStarterApplication", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspireApplication", "AspireApplication", "{6F346111-6ACB-4059-9966-085C4A97EE99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.AppHost", "AspireApp1\AspireApp1.AppHost\AspireApp1.AppHost.csproj", "{01AF9365-1D87-4CFF-8E08-84637F276BBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireApp1.AppHost", "AspireApp1\AspireApp1.AppHost\AspireApp1.AppHost.csproj", "{01AF9365-1D87-4CFF-8E08-84637F276BBF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireApp1.ServiceDefaults", "AspireApp1\AspireApp1.ServiceDefaults\AspireApp1.ServiceDefaults.csproj", "{E339C424-3342-4563-8FF5-8995CABAE37A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspireAppHost", "AspireAppHost", "{CAF0B91D-E906-46ED-BBFB-BCF1D89113DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost1", "AppHost1\AppHost1.csproj", "{C90A385F-23F7-4CDD-BDDD-B39A3BDE64FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppHost1", "AppHost1\AppHost1.csproj", "{C90A385F-23F7-4CDD-BDDD-B39A3BDE64FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspireServiceDefaults", "AspireServiceDefaults", "{978C939F-65BA-40D1-B206-E0847628AFCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDefaults1", "ServiceDefaults1\ServiceDefaults1.csproj", "{7CEE1521-941B-409B-A3F5-AE9378F0DBB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceDefaults1", "ServiceDefaults1\ServiceDefaults1.csproj", "{7CEE1521-941B-409B-A3F5-AE9378F0DBB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplc4DevHp", "..\UFQI_015_SCscBlogMSAPP\Aplc4DevHp\Aplc4DevHp.csproj", "{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -382,6 +384,12 @@ Global
 		{7CEE1521-941B-409B-A3F5-AE9378F0DBB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CEE1521-941B-409B-A3F5-AE9378F0DBB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CEE1521-941B-409B-A3F5-AE9378F0DBB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}.DEBUG_CG|Any CPU.ActiveCfg = DEBUG_CG|Any CPU
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}.DEBUG_CG|Any CPU.Build.0 = DEBUG_CG|Any CPU
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -432,6 +440,7 @@ Global
 		{C90A385F-23F7-4CDD-BDDD-B39A3BDE64FC} = {CAF0B91D-E906-46ED-BBFB-BCF1D89113DF}
 		{978C939F-65BA-40D1-B206-E0847628AFCC} = {C3FEA30E-63CA-42E7-85AA-2571B51FADB0}
 		{7CEE1521-941B-409B-A3F5-AE9378F0DBB1} = {978C939F-65BA-40D1-B206-E0847628AFCC}
+		{B306BF6A-6537-4A0B-B205-1FEBA3A38D6A} = {C32E20C0-DCB1-4019-BD6B-0003638DB9BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D24CCF61-398E-4E4E-9229-F1A2D24B1AB2}
