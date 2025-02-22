@@ -5,18 +5,6 @@ using System.Linq;
 namespace CsLangVersion.Fdmts_CollectionType {
     public partial class ListTest {
 
-    /// <summary>
-    /// TODO
-    /// </summary>
-    [Test]
-    public void List_Union_Test() {
-      var list1 = new List<int>() { 0, 5, 7, 1, 3, 4 };
-      var list2 = new List<int>() { 1, 3, 5, 0, 0, 7 };
-
-      var resUnion = list1.Union(list2).ToList();
-      var resConcat = list1.Concat(list2).ToList();
-      Console.ReadLine();
-    }
 
 
     /// <summary>

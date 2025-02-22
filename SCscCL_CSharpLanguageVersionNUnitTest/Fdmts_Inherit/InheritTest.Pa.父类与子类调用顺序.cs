@@ -21,7 +21,9 @@ namespace CsLangVersion.Fdmts_Inherit {
                 Name=name;
             }
         }
-
+        /// <summary>
+        /// The order in which the parent class and the subclass are called
+        /// </summary>
         [Test]
         public void 父类与子类调用顺序() {
             System.Console.WriteLine(@$"UT Excuted {nameof(InheritTest)}_{nameof(父类与子类调用顺序)}");
